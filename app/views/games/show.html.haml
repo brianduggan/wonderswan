@@ -1,0 +1,30 @@
+%div.single-game-container
+  = image_tag @game.img_url, :class => 'game-nail-large'
+  - if @game.back_url != ''
+    = image_tag @game.back_url, :class => 'game-nail-large'
+  %h3
+    = @game.title
+  - if @game.japanese_title
+    %h4.japanese-text
+      = @game.japanese_title
+      %sub= @game.romaji
+  %h5 Release Date: #{@game.release_year}
+  %h5 Genre(s): #{@game.genre}
+  %h5 Color: #{@game.color}
+  %h5 English Friendly? #{@game.english_friendly}
+  %h5 Developer: #{@game.developer}
+  %h5 Publisher: #{@game.publisher}
+  %h4 Overview:
+  %p
+    = @game.description
+  - if @game.video_url && @game.video_url.length > 10
+    %iframe{:src => @game.video_url, :allowfullscreen => "", :frameborder => "0", :height => "315", :width => "560"}
+  =render :template => 'game_assignments/new', :locals => {:this_game => @game}
+  - if current_user && current_user.permission > 0
+    %div#game-admin
+      %h4 Admin
+      %button.btn.btn-info#edit-game Edit
+      = button_to 'Delete', game_path(@game), :confirm => 'Are you really really really sure?' , :method => :delete, :class => 'btn btn-danger'
+
+
+  =render :template => 'games/edit', :locals => {:game => @game}

@@ -1,0 +1,25 @@
+%div#blog-list
+  - if @blogs.length == 0
+    = link_to 'You have no blog posts yet... create one?', new_user_blog_path
+    = link_to 'Go Back', admin_path
+  - @blogs.each do |post|
+    %div.each-blog.card
+      %div.card-header
+        %h4
+          = link_to post.title, {:action => 'show', :controller => 'blogs', :id=> post.id }
+          %sub= post.published == true ? '' : 'unpublished'
+      %div.card-body
+        %p
+          = raw post.body
+        %p
+          = 'Created: '
+          = post.created_at
+      %div.card-footer
+        %p
+        - if post.published == false
+          = link_to 'Publish?', {:action => 'publish', :controller => 'blogs', :id => post.id}, method: :get
+        - else
+          %span= 'This space will have an unpublish button'
+          = link_to 'Unpublish?', {:action => 'unpublish', :controller => 'blogs', :id => post.id}, method: :get
+        %span
+          = link_to 'Delete blog post?', user_blog_path(current_user, post), method: :delete

@@ -1,0 +1,9 @@
+-if current_user && current_user.permission
+  %div#admin-container
+    %h3 Welcome to Admin Mode!
+    /#TODO
+    %p There seems to be nothing here...
+
+    %p except this... BLOG MANAGEMENT!!!!
+    = link_to 'Create a Blog Post', new_user_blog_path(current_user)
+    = link_to 'View Your Blog Posts', user_blogs_path(current_user)

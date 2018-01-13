@@ -1,0 +1,11 @@
+%div.collection-container
+  %h3 Hi there this is the collections home
+
+  %ul
+    - current_user.collections.all.each do |coll|
+      %li
+        = link_to coll.name, user_collection_path(current_user, coll.id)
+        %p
+          = coll.description
+
+  =render :template => 'collections/new'

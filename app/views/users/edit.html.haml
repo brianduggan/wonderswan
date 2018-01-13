@@ -1,0 +1,13 @@
+%div#edit-user-container
+  %h4 Edit Profile
+  = form_for user, url: {action: 'update'} do |f|
+    %div.form_group
+      = f.label :email, 'E-Mail'
+      = f.email_field :email, :class => 'form-control'
+    %div.form_group
+      = f.label :firstname, 'First Name'
+      = f.text_field :firstname, :class => 'form-control'
+    %div.form_group
+      = f.label :lastname, 'Last Name'
+      = f.text_field :lastname, :class => 'form-control'
+    = f.submit

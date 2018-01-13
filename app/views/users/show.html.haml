@@ -1,0 +1,10 @@
+%div#profile-container
+  %h2 Username: #{current_user.username}
+  %h3 E-Mail: #{current_user.email}
+  %h3 First Name: #{current_user.firstname}
+  %h3 Last Name: #{current_user.lastname}
+  -if current_user.permission == 1
+    %h4 User Level: #{current_user.permission_level}
+    %h4 Permission Level: #{current_user.permission}
+
+  = render :template => 'users/edit', :locals => {:user => current_user}

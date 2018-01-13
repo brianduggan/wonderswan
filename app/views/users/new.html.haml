@@ -1,0 +1,29 @@
+%div.user-form-container
+
+  = form_for @user, :html => {:class => 'user-form'} do |f|
+    %h2 Sign Up
+    .form-group
+      = f.label :username
+      = f.text_field :username, :class => 'form-control', :placeholder => 'Username'
+    .form-group
+      = f.label :password
+      = f.password_field :password, :class => 'form-control', :placeholder => 'Password'
+    .form-group
+      = f.label :email, 'E-Mail'
+      = f.email_field :email, :class => 'form-control', :placeholder => 'E-Mail'
+    .form-group
+      = f.label :firstname, 'First Name'
+      = f.text_field :firstname, :class => 'form-control', :placeholder => 'First Name'
+    .form-group
+      = f.label :lastname, 'Last Name'
+      = f.text_field :lastname, :class => 'form-control', :placeholder => 'Last Name'
+
+    = f.submit
+
+  %div.user-form-errors
+    - if flash[:error]
+      - flash['error'].each do |val|
+        %p
+          #{val}
+
+-#

@@ -1,0 +1,31 @@
+%div#edit-game-container
+  %h3 Edit Game
+  = form_for @game, url: {action: 'update', method: 'put'} do |f|
+    .form-group
+      = f.label :title
+      = f.text_field :title, :class => 'form-control'
+    .form-group
+      = f.label :japanese_title
+      = f.text_field :japanese_title, :class => 'form-control'
+    .form-group
+      = f.label :romaji
+      = f.text_field :romaji, :class => 'form-control'
+    .form-group
+      = f.label :release_year
+      = f.text_field :release_year, :class => 'form-control'
+    .form-group
+      = f.label :img_url, 'Front Image Url'
+      = f.text_field :img_url, :class=> 'form-control'
+    .form-group
+      = f.label :back_url, 'Back Image Url'
+      = f.text_field :img_url, :class=> 'form-control'
+    .form-group
+      = f.label :genre
+      = f.text_field :genre, :class => 'form-control'
+    .form_group
+      = f.label :video_url
+      = f.text_field :video_url, :class => 'form-control'
+    .form-group
+      = f.label :description
+      = f.text_area :description, :class => 'form-control'
+    = f.submit 'Submit Changes'

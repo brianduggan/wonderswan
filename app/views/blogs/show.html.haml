@@ -1,0 +1,7 @@
+%div#preview-blog-post
+  %h2
+    = @blog.title
+    %sub= link_to ' Edit', {:action => 'edit', :controller => 'blogs'}
+  %div= raw @blog.body
+
+  =link_to 'Publish?', {:action => 'publish', :controller => 'blogs', :id => @blog.id}, method: :get

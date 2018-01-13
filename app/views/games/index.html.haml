@@ -1,0 +1,17 @@
+%div#games-controller-container
+
+  %div#game-list
+    %h3 Game List
+    - @games.each do |game|
+      %div.single-game-container
+        = link_to game_path(game.id) do
+          = image_tag game.img_url, :class => 'game-nail'
+          %h5.game-title= game.title
+          %span (#{game.release_year})
+        = render :template => 'game_assignments/new', :locals => {:this_game => game}
+
+    = will_paginate @games
+
+  -# %div#game-admin
+  -#   - if current_user && current_user.permission
+  -#     = render :template => 'games/new'

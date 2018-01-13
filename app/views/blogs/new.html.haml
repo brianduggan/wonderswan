@@ -1,0 +1,16 @@
+%div#new-blog-container
+  = form_for([@user, @blog]) do |f|
+    .form-group
+      = f.label :title
+      = f.text_field :title, :class => 'form-control'
+    .form-group
+      = f.label :body, 'Content:'
+      = f.text_area :body, :class => 'form-control'
+    = f.hidden_field :published, :value => false
+    = f.hidden_field :active, :value => true
+    = submit_tag
+
+
+
+    -# = form_for :blog ({:action => 'create', :controller => 'blogs'}) do
+    -# as: :blog, url: user_blog_path(current_user), method: :post, action: 'create'

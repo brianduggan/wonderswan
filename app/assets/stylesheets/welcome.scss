@@ -1,0 +1,59 @@
+// Place all the styles related to the welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import url('https://fonts.googleapis.com/css?family=Buda:300|Caesar+Dressing|Overlock+SC|Racing+Sans+One');
+$greeting-font: 'Racing Sans One', cursive; // can't make more than the logo this font
+$greeting-font2: 'Overlock SC', cursive; // could work
+$greeting-font3: 'Buda', cursive; //too thin
+$greeting-font4: 'Caesar Dressing', cursive; // definitely not, this is just for Camp SwanCrystal Lake jokes
+
+@import url('https://fonts.googleapis.com/css?family=Archivo+Narrow|Didact+Gothic|Dosis|Gudea|Hind+Siliguri|Josefin+Sans|Quicksand|Ubuntu+Condensed');
+$body-font1: 'Dosis', sans-serif; //meh
+$body-font2: 'Josefin Sans', sans-serif; //too bold
+$body-font3: 'Quicksand', sans-serif; //meh
+$body-font4: 'Ubuntu Condensed', sans-serif; //too bold and thin
+$body-font5: 'Archivo Narrow', sans-serif; //too bold and thin
+$body-font6: 'Hind Siliguri', sans-serif; //maybe this one
+$body-font7: 'Gudea', sans-serif; //pretty good too
+$body-font8: 'Didact Gothic', sans-serif; //maybe
+
+body {
+  // background-image: url(https://c1.staticflickr.com/5/4013/4675237933_6320b214f6_b.jpg);
+  // background-image: url('https://emumovies.com/screenshots/monthly_2017_02/58ae0ccac6431_BandaiWonderSwanColor-Unified(16x9)(HD).png.f8e4944bf0ff812b2a6c57e5dbabac55.png');
+  background: url('https://img00.deviantart.net/7b30/i/2015/315/1/0/bandai_wonderswan_color_by_blinkybill-d9gaxyt.png') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  * {
+    font-family: $body-font8;
+  }
+}
+
+header {
+  background-color: rgba(256,256,256,0.9);
+  width: 100%;
+  padding: 1%;
+}
+
+#main-container {
+  background-color: rgba(256,256,256,0.8);
+  padding: 3% 5%;
+  min-height: 82vh;
+}
+
+#welcome-container section {
+  font-family: $greeting-font2;
+  margin-bottom: 3%;
+}
+
+.card {
+  margin-bottom: 2%;
+}
+
+footer {
+
+}
+
+//

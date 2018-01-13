@@ -1,0 +1,38 @@
+%div#welcome-container
+  %section
+    %h1#logo-wordmark Swan Crystal
+    %h3 The Wonderswan fan page and database
+
+  %div#blog-container
+    - @blogs.each do |post|
+      %div.card
+        %div.card-header
+          %h3= post.title
+        %div.card-body
+          %p= raw post.body
+        %div.card-footer
+          %span by #{post.user.username}
+          %span created at: #{post.convert_create}
+          %span last modified at: #{post.convert_updated}
+          - if current_user
+            = link_to 'Care to Comment?', new_user_blog_comment_path(current_user, post)
+
+        - if post.comments.length > 0
+          %div.card-body
+            %h4 Comments:
+
+            - post.comments.each do |comment|
+              %div.card
+                %div.card-body
+                  %span= comment.body
+                %div.card-footer
+                  %span by #{comment.author}
+                  -if current_user && current_user.id == comment.user_id
+                    = link_to 'Delete', user_blog_comment_path(current_user, post, comment), method: :delete
+
+
+
+
+
+
+-#

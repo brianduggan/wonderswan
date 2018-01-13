@@ -1,0 +1,8 @@
+%div#new-comment-container
+  = form_for [@user, @blog, @comment] do |f|
+    = f.label :body
+    = f.text_area :body
+    = f.hidden_field :user_id, :value => @user.id
+    = f.hidden_field :blog_id, :value => @blog.id
+    = f.hidden_field :author, :value => @user.username
+    = f.submit

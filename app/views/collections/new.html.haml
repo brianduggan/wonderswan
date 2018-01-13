@@ -1,0 +1,12 @@
+%div#collection-create-container
+  %div#expand-collection-create
+    %span+
+    %h4.fall-inline Create a New List
+  =form_tag({:action => 'create', :controller => 'collections'}, :id => 'collection-create-form' ) do
+    .form-group
+      = label_tag :name
+      = text_field_tag :name
+    .form-group
+      = label_tag :description
+      = text_field_tag :description
+    = submit_tag 'Submit'

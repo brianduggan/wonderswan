@@ -1,0 +1,19 @@
+%div#new-games-container
+  %h3 Add a Game
+  = form_tag({:action => 'create', :controller => 'games'}, :id => 'new-game-form') do
+    .form-group
+      = label_tag :title
+      = text_field_tag :title, '' ,:class => 'form-control'
+    .form-group
+      = label_tag :release_year
+      = text_field_tag :release_year, '' ,:class => 'form-control'
+    .form-group
+      = label_tag :img_url, 'Image Url'
+      = text_field_tag :img_url, '', :class=> 'form-control'
+    .form-group
+      = label_tag :genre
+      = text_field_tag :genre, '' ,:class => 'form-control'
+    .form-group
+      = label_tag :description
+      = text_field_tag :description, '' ,:class => 'form-control'
+    = submit_tag 'Submit'

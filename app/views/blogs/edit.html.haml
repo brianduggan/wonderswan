@@ -1,0 +1,9 @@
+%div#edit-blog-post
+  = form_for @blog, url: {action: 'update'} do |f|
+    .form-group
+      = f.label :title
+      = f.text_field :title, :class => 'form-control'
+    .form-group
+      = f.label :body, 'Content'
+      = f.text_area :body, :class => 'form-control'
+    = f.submit

@@ -1,0 +1,53 @@
+// Place all the styles related to the games controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.game-nail {
+  max-width: 50px;
+  display: inline-block;
+}
+
+.game-nail-large {
+  max-width: 250px;
+  display: inline-block;
+}
+
+.single-game-container {
+  border-bottom: 1px solid lightgrey;
+  padding: 2%;
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
+  a:hover {
+    text-decoration: none;
+    // color:
+  }
+}
+
+.game-assignment-container {
+  display: inline-block;
+  margin-top: 1%;
+}
+
+.game-title {
+  display: inline-block;
+}
+
+#edit-game-container {
+  margin: 0 auto;
+  max-width: 60%;
+  display: none;
+}
+
+#game-admin {
+  border: 1px solid grey;
+  padding: 1%;
+}
+
+.pagination {
+  a {
+    padding: 5px;
+  }
+}
