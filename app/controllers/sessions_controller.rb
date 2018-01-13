@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
       redirect_to user_path(user)
     else
       flash[:error] = 'Username or Password incorrect'
-      redirect_to login_path
+      redirect_to :back
     end
   end
 

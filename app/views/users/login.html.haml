@@ -1,12 +1,25 @@
+-# %div.user-form-container
+-#   =form_tag({ :action => 'create', :controller => 'sessions' }, { :class => 'user-form' }) do
+-#     %h2 Log In
+-#     .form-group
+-#       = label_tag :username
+-#       = text_field_tag :username
+-#     .form-group
+-#       = label_tag :password
+-#       = password_field_tag :password
+-#     = submit_tag "Log In"
+-#
+-#   %div.user-form-errors
+-#     - if flash[:error]
+-#       - flash.each do |key, val|
+-#         %p
+-#           #{val}
 %div.user-form-container
   =form_tag({ :action => 'create', :controller => 'sessions' }, { :class => 'user-form' }) do
-    %h2 Log In
-    .form-group
-      = label_tag :username
-      = text_field_tag :username
-    .form-group
-      = label_tag :password
-      = password_field_tag :password
+    -# = label_tag :username
+    = text_field_tag :username
+    -# = label_tag :password
+    = password_field_tag :password
     = submit_tag "Log In"
 
   %div.user-form-errors

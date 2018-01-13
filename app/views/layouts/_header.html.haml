@@ -1,4 +1,6 @@
 %header
+  - if !current_user
+    = render :template => 'users/new'
   = image_tag 'transparent-wsc-logo.png', :id => 'header-image'
   %nav
     %div.header-left
@@ -17,5 +19,6 @@
       - if current_user
         = button_to "Log Out", logout_path, method: :delete, :id => 'log-out'
       - else
-        = link_to "Sign Up", new_user_path
-        = link_to "Log In", login_path
+        %span#sign-up-button Sign Up
+        = render :template => 'users/login'
+        -# = link_to "Sign Up", new_user_path
