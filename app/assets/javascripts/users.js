@@ -9,4 +9,7 @@ $( document ).on('turbolinks:load', function(){
   $('span.close-modal').on('click', function(){
     $('#sign-up-container').hide();
   });
+
+
+
 })

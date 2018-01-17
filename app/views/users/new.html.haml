@@ -1,31 +1,23 @@
-%div.modal-background#sign-up-container
-  %div.modal-container
-    %div.modal-body
-      %span.close-modal X
-      =form_for new_user do |f|
-        %h2 Sign Up
-        .form-group
-          = f.label :username
-          = f.text_field :username, :class => 'form-control', :placeholder => 'Username'
-        .form-group
-          = f.label :password
-          = f.password_field :password, :class => 'form-control', :placeholder => 'Password'
-        .form-group
-          = f.label :email, 'E-Mail'
-          = f.email_field :email, :class => 'form-control', :placeholder => 'E-Mail'
-        .form-group
-          = f.label :firstname, 'First Name'
-          = f.text_field :firstname, :class => 'form-control', :placeholder => 'First Name'
-        .form-group
-          = f.label :lastname, 'Last Name'
-          = f.text_field :lastname, :class => 'form-control', :placeholder => 'Last Name'
+%div#sign-up-container
+  =form_for new_user do |f|
+    %h2 Sign Up
+    .form-group
+      = f.label :username
+      = f.text_field :username, :class => 'form-control', :placeholder => 'Username'
+    .form-group
+      = f.label :password
+      = f.password_field :password, :class => 'form-control', :placeholder => 'Password'
+    .form-group
+      = f.label :email, 'E-Mail'
+      = f.email_field :email, :class => 'form-control', :placeholder => 'E-Mail'
+    .form-group
+      = f.label :firstname, 'First Name'
+      = f.text_field :firstname, :class => 'form-control', :placeholder => 'First Name'
+    .form-group
+      = f.label :lastname, 'Last Name'
+      = f.text_field :lastname, :class => 'form-control', :placeholder => 'Last Name'
+      = submit_tag
 
-        = submit_tag
-
-      -# %div.user-form-errors
-      -#   - if flash[:error]
-      -#     - flash['error'].each do |val|
-      -#       %p
-      -#         #{val}
-
-    -#
+    %div.user-form-errors
+      - if flash[:error] && flash[:action] == 'Sign Up'
+        %span= flash[:error][0]
