@@ -7,7 +7,8 @@ class GameAssignmentsController < ApplicationController
   def create
     game_assignment = GameAssignment.create(game_ass_params)
     # Add Error handling here TODO
-    redirect_to user_collection_path(current_user, params[:collection_id])
+    # redirect_to user_collection_path(current_user, params[:collection_id])
+    redirect_to :back
   end
 
   def destroy

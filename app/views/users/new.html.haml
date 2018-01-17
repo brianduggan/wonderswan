@@ -1,7 +1,8 @@
 %div.modal-background#sign-up-container
   %div.modal-container
     %div.modal-body
-      =form_for @user do |f|
+      %span.close-modal X
+      =form_for new_user do |f|
         %h2 Sign Up
         .form-group
           = f.label :username

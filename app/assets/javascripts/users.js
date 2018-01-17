@@ -5,4 +5,8 @@ $( document ).on('turbolinks:load', function(){
   $('span#sign-up-button').on('click', function(){
     $('#sign-up-container').show();
   });
+
+  $('span.close-modal').on('click', function(){
+    $('#sign-up-container').hide();
+  });
 })

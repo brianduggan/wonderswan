@@ -9,4 +9,8 @@ module ApplicationHelper
     redirect_to root_path unless current_user
   end
 
+  def new_user
+    @new_user = @new_user || User.new
+  end
+
 end
