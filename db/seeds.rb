@@ -9,7 +9,7 @@
 require 'nokogiri'
 require 'open-uri'
 
-platformIDs = ['4925','4926']
+platformIDs = ['4925', '4926']
 platformURL = 'http://thegamesdb.net/api/GetPlatformGames.php?platform='
 gameURL = 'http://thegamesdb.net/api/GetGame.php?id='
 baseImg = 'http://thegamesdb.net/banners/'
@@ -37,7 +37,8 @@ platformIDs.each do |pid|
     gameDocXML = Hash.from_xml(gameDoc.to_s)
     gameInfo = gameDocXML['html']['body']['data']['game']
     title = gameInfo['gametitle']
-    color = gameInfo['platformID'] == '4926' ? 'Yes' : 'No'
+    color = if pid.to_i == 4926 then 'Yes' else 'No' end
+    puts color
     release_date = gameInfo['releasedate']
     description = gameInfo['overview']
     publisher = gameInfo['publisher']
@@ -91,7 +92,7 @@ platformIDs.each do |pid|
       back_url: back_url,
       genre: genreString
     )
-    puts 'In case of failure PID: ' + i.to_s + ' and Game ID#: ' + gid.to_s
+    puts 'In case of failure "I": ' + i.to_s + ' and Game ID#: ' + gid.to_s
     puts title + ' Complete!'
   end #ends each game loop
   puts pid + ' Complete!'
