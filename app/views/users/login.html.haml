@@ -19,9 +19,7 @@
     = text_field_tag :username, '' , :placeholder => 'Username'
     = password_field_tag :password, '', :placeholder => 'Password'
     = submit_tag "Log In"
-
+  -# TODO need to style this properly to fix header
   %div.user-form-errors
     - if flash[:error]
-      - flash.each do |key, val|
-        %p
-          #{val}
+      %span= flash[:error]

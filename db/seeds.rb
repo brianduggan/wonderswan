@@ -10,7 +10,6 @@ require 'nokogiri'
 require 'open-uri'
 
 platformIDs = ['4925','4926']
-# platformIDs = ['4925']
 platformURL = 'http://thegamesdb.net/api/GetPlatformGames.php?platform='
 gameURL = 'http://thegamesdb.net/api/GetGame.php?id='
 baseImg = 'http://thegamesdb.net/banners/'

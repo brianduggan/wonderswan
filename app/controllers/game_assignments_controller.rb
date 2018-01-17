@@ -8,7 +8,14 @@ class GameAssignmentsController < ApplicationController
     game_assignment = GameAssignment.create(game_ass_params)
     # Add Error handling here TODO
     # redirect_to user_collection_path(current_user, params[:collection_id])
-    redirect_to :back
+    if !game_assignment.save
+      flash[:error] = 'Unable to add to List'
+      redirect_to :back
+    else
+      flash[:notice] = 'Added to Collection'
+      flash[:game_id] = game_ass_params['game_id'].to_i
+      redirect_to :back
+    end
   end
 
   def destroy

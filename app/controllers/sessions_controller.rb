@@ -4,8 +4,11 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       redirect_to user_path(user)
+    elsif user && !user.authenticate(params[:password])
+      flash[:error] = 'Sorry, incorrect password'
+      redirect_to :back
     else
-      flash[:error] = 'Username or Password incorrect'
+      flash[:error] = 'Sorry, this username does not exist'
       redirect_to :back
     end
   end

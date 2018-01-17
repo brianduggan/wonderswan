@@ -1,11 +1,16 @@
 %div.game-assignment-container.float-right
   - if current_user
+    -# TODO This logic probably shouldn't be here
     - collection_list = []
     - current_user.collections.each do |collection|
       - if !collection.games.include? this_game
         - collection_list.push(collection)
+    -# ^^^
     - if collection_list.length > 0
       = form_tag ({:action => 'create', :controller => 'game_assignments'}) do
         = select_tag :collection_id, options_from_collection_for_select(collection_list, 'id', 'name')
         = hidden_field_tag :game_id, this_game.id # local variable passed in
         = submit_tag 'Add to List'
+
+      - if flash[:notice] && flash[:game_id] == this_game.id
+        %span= flash[:notice]

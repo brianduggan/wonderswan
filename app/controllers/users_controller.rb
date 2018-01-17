@@ -7,7 +7,6 @@ class UsersController < ApplicationController
       redirect_to user_path(user)
     else
       flash[:error] = user.errors.full_messages
-      binding.pry
       redirect_to new_user_path
     end
   end

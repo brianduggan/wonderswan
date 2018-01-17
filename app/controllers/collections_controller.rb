@@ -13,8 +13,10 @@ class CollectionsController < ApplicationController
     collection.update({user_id: current_user.id})
     if !collection.save
       flash[:error] = collection.errors.full_messages
+      redirect_to :back
+    else
+      redirect_to user_collections_path(current_user)
     end
-    redirect_to user_collections_path(current_user)
   end
 
   def show
