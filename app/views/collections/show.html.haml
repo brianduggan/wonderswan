@@ -8,5 +8,5 @@
   %ul
     - @collection.games.each do |game|
       %li
-        = game.title
+        = link_to game.title, game_path(game.id)
         = link_to "Delete from List", game_assignment_path(@collection.id, :game_id => game.id), method: :delete
