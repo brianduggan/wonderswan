@@ -49,7 +49,6 @@ platformIDs.each do |pid|
     puts 'Now Adding... ' + title
     # GENRE SECTION
     # puts gameInfo['genres']
-    #THIS IS HOW IT WAS!!!
     if gameInfo['genres']
       genres = gameInfo['genres']['genre']
       if genres.kind_of? (Array)
@@ -93,7 +92,7 @@ platformIDs.each do |pid|
       genre: genreString
     )
     puts 'In case of failure "I": ' + i.to_s + ' and Game ID#: ' + gid.to_s
-    puts title + ' Complete!'
+    puts title + '!'
   end #ends each game loop
   puts pid + ' Complete!'
 end #ends each platform loop
