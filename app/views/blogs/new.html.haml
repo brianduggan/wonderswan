@@ -6,6 +6,9 @@
     .form-group
       = f.label :body, 'Content:'
       = f.text_area :body, :class => 'form-control'
+    .form-group
+      = f.label :tag_list, 'Tags:'
+      = f.text_area :tag_list, :class => 'form-control'
     = f.hidden_field :published, :value => false
     = f.hidden_field :active, :value => true
     = submit_tag

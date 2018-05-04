@@ -6,4 +6,7 @@
     .form-group
       = f.label :body, 'Content'
       = f.text_area :body, :class => 'form-control'
+    .form-group
+      = f.label :tags, 'Tags'
+      = f.text_field :tag_list, :class => 'form-control'
     = f.submit

@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
   get '/admin' => 'users#admin'
   get '/login' => 'users#login'
+  get '/tags/:tag', to: 'welcome#index', as: :tag
   delete '/logout' => 'sessions#destroy'
 
   # Example of regular route:

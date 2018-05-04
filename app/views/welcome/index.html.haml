@@ -10,6 +10,11 @@
           %h3= post.title
         %div.card-body
           %p= raw post.body
+          - if post.tag_list.length > 0
+            %div.float-right
+              -#TODO remove the following space character later on
+              %span Tags:&nbsp
+              %span.float-right= raw(post.tag_list.map { |t| link_to t, tag_path(t) }.join(', '))
         %div.card-footer
           %span by #{post.user.username}
           %span created at: #{post.convert_create}

@@ -25,6 +25,7 @@ class BlogsController < ApplicationController
 
   def edit
     @blog = Blog.find(params[:id])
+    @blog.tag_list = @blog.tag_list.map{|tag| tag}.join(', ')
   end
 
   def update
@@ -54,7 +55,7 @@ class BlogsController < ApplicationController
   private
 
   def blog_params
-    params.require(:blog).permit(:title, :body, :published, :active)
+    params.require(:blog).permit(:title, :body, :published, :active, :tag_list)
   end
 
 end

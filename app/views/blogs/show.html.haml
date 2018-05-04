@@ -3,5 +3,7 @@
     = @blog.title
     %sub= link_to ' Edit', {:action => 'edit', :controller => 'blogs'}
   %div= raw @blog.body
+  %div
+    %p= raw(@blog.tag_list.map { |t| link_to t, tag_path(t) }.join(', '))
 
   =link_to 'Publish?', {:action => 'publish', :controller => 'blogs', :id => @blog.id}, method: :get
