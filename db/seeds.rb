@@ -6,8 +6,20 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+
 require 'nokogiri'
 require 'open-uri'
+
+# Adds default admin user
+User.create(
+  username: 'brian',
+  password: 'brian',
+  email: 'bduggan3387@gmail.com',
+  firstname: 'brian',
+  lastname: 'duggan',
+  permission: 1
+)
+puts 'brian created!'
 
 platformIDs = ['4925', '4926']
 platformURL = 'http://thegamesdb.net/api/GetPlatformGames.php?platform='
@@ -38,7 +50,6 @@ platformIDs.each do |pid|
     gameInfo = gameDocXML['html']['body']['data']['game']
     title = gameInfo['gametitle']
     color = if pid.to_i == 4926 then 'Yes' else 'No' end
-    puts color
     release_date = gameInfo['releasedate']
     description = gameInfo['overview']
     publisher = gameInfo['publisher']
@@ -89,7 +100,7 @@ platformIDs.each do |pid|
       developer: developer,
       img_url: img_url,
       back_url: back_url,
-      genre: genreString
+      genres: genreString
     )
     puts 'In case of failure "I": ' + i.to_s + ' and Game ID#: ' + gid.to_s
     puts title + '!'
@@ -97,15 +108,5 @@ platformIDs.each do |pid|
   puts pid + ' Complete!'
 end #ends each platform loop
 puts 'Wonderswan and Wonderswan Color Process Complete!'
-
-User.create(
-  username: 'brian',
-  password: 'brian',
-  email: 'bduggan3387@gmail.com',
-  firstname: 'brian',
-  lastname: 'duggan',
-  permission: 1
-)
-puts 'brian created!'
 
 #

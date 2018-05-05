@@ -48,7 +48,7 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:game).permit(:title, :description, :release_year, :genre, :img_url, :back_url, :collections_id, :japanese_title, :romaji, :video_url, :term)
+    params.require(:game).permit(:title, :description, :release_year, :genres, :genre_list, :img_url, :back_url, :collections_id, :japanese_title, :romaji, :video_url, :term)
   end
 
 end
