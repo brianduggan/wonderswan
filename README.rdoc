@@ -8,6 +8,8 @@ Upcoming Todos:
 
 * Overhaul Design
 
-* Add Tagging on Games for Genres, and other features like English-Friendly.
+* Image caching to decrease load times
+
+* Add Tagging on Games for Genres, and other features like English-Friendly
 
 * Console versions/colors/special edition section
