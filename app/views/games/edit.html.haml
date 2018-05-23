@@ -20,8 +20,8 @@
       = f.label :back_url, 'Back Image Url'
       = f.text_field :back_url, :class=> 'form-control'
     .form-group
-      = f.label :genres
-      = f.text_field :genres, :class => 'form-control'
+      = f.label :genre_list, 'Genre List (separate by commas)'
+      = f.text_field :genre_list, :class => 'form-control', :value => @game.genre_list.join(', ')
     .form_group
       = f.label :video_url
       = f.text_field :video_url, :class => 'form-control'

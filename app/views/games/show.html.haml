@@ -9,7 +9,7 @@
       = @game.japanese_title
       %sub= @game.romaji
   %h5 Release Date: #{@game.release_year}
-  %h5 Genre(s): #{@game.genres}
+  %h5 Genre(s): #{raw @game.genre_list.map { |g| link_to g, genre_path(g) }.join(', ')}
   %h5 Color: #{@game.color}
   %h5 English Friendly? #{@game.english_friendly}
   %h5 Developer: #{@game.developer}

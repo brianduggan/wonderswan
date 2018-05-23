@@ -4,6 +4,7 @@ class CreateGames < ActiveRecord::Migration
       t.string :title
       t.string :release_year
       t.string :genres
+      t.string :igenres
       t.string :description
 
       t.timestamps null: false

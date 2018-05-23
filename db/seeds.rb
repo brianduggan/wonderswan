@@ -29,6 +29,7 @@ baseImg = 'http://thegamesdb.net/banners/'
 # doc = Nokogiri::HTML(open(platformURL + '4925'))
 # docXML = Hash.from_xml(doc.to_s)
 # gameList = docXML['html']['body']['data']
+failLog = []
 
 platformIDs.each do |pid|
 
@@ -45,68 +46,77 @@ platformIDs.each do |pid|
     # Uncomment for real test
     gid = game['id']
     # gid = '27756'
-    gameDoc = Nokogiri::HTML(open(gameURL + gid))
-    gameDocXML = Hash.from_xml(gameDoc.to_s)
-    gameInfo = gameDocXML['html']['body']['data']['game']
-    title = gameInfo['gametitle']
-    color = if pid.to_i == 4926 then 'Yes' else 'No' end
-    release_date = gameInfo['releasedate']
-    description = gameInfo['overview']
-    publisher = gameInfo['publisher']
-    developer = gameInfo['developer']
-    genre = ''
-    img_url = ''
-    back_url = ''
-    puts 'Now Adding... ' + title
-    # GENRE SECTION
-    # puts gameInfo['genres']
-    if gameInfo['genres']
-      genres = gameInfo['genres']['genre']
-      if genres.kind_of? (Array)
-        genreString = ''
-        genres.each do |val|
-          genreString += val + ', '
+    begin
+        gameDoc = Nokogiri::HTML(open(gameURL + gid))
+        gameDocXML = Hash.from_xml(gameDoc.to_s)
+        gameInfo = gameDocXML['html']['body']['data']['game']
+        title = gameInfo['gametitle']
+        color = if pid.to_i == 4926 then 'Yes' else 'No' end
+        release_date = gameInfo['releasedate']
+        description = gameInfo['overview']
+        publisher = gameInfo['publisher']
+        developer = gameInfo['developer']
+        genre = ''
+        img_url = ''
+        back_url = ''
+        puts "Now Adding... #{title}"
+        # GENRE SECTION
+        # puts gameInfo['genres']
+        if gameInfo['genres']
+          genres = gameInfo['genres']['genre']
+          if genres.kind_of? (Array)
+            genreString = ''
+            genres.each do |val|
+              genreString += val + ', '
+            end
+            genre = genreString[0...-2]
+          else
+            genreString = genres
+          end
         end
-        genre = genreString[0...-2]
-      else
-        genreString = genres
-      end
-    end
-    # puts genre
+        # puts genre
 
-    # IMG SECTION
-    # GETS FRONT AND BACK BOX ART
-    boxImages = gameInfo['images']['boxart']
-    if boxImages.kind_of?(Array)
-      boxImages.each do |val|
-        valTest = val.split('/')
-        if valTest.include?('front')
-          img_url = baseImg + val
-        elsif valTest.include?('back')
-          back_url = baseImg + val
+        # IMG SECTION
+        # GETS FRONT AND BACK BOX ART
+        boxImages = gameInfo['images']['boxart']
+        if boxImages.kind_of?(Array)
+          boxImages.each do |val|
+            valTest = val.split('/')
+            if valTest.include?('front')
+              img_url = baseImg + val
+            elsif valTest.include?('back')
+              back_url = baseImg + val
+            end
+          end
+
+        else
+          img_url = baseImg + boxImages
         end
-      end
 
-    else
-      img_url = baseImg + boxImages
+        Game.create(
+          title: title,
+          color: color,
+          release_year: release_date,
+          description: description,
+          publisher: publisher,
+          developer: developer,
+          img_url: img_url,
+          back_url: back_url,
+          genres: genreString,
+          igenres: genreString
+        )
+
+    rescue
+        # puts 'In case of failure "I": ' + i.to_s + ' and Game ID#: ' + gid.to_s
+        puts "#{gid.to_s} - #{game['gametitle']} failed, added to failure log"
+        failLog.push(gid.to_s)
     end
-
-    Game.create(
-      title: title,
-      color: color,
-      release_year: release_date,
-      description: description,
-      publisher: publisher,
-      developer: developer,
-      img_url: img_url,
-      back_url: back_url,
-      genres: genreString
-    )
-    puts 'In case of failure "I": ' + i.to_s + ' and Game ID#: ' + gid.to_s
-    puts title + '!'
   end #ends each game loop
   puts pid + ' Complete!'
 end #ends each platform loop
 puts 'Wonderswan and Wonderswan Color Process Complete!'
+puts "#{failLog} items could not be completed"
+Rails.logger.debug(failLog)
+
 
 #

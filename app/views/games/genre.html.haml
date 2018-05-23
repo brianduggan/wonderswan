@@ -1,0 +1,7 @@
+- @games.each do |game|
+  %div.single-game-container
+    = link_to game_path(game.id) do
+      = image_tag game.img_url, :class => 'game-nail'
+      %h5.game-title= game.title
+      %span (#{game.release_year})
+    = render :template => 'game_assignments/new', :locals => {:this_game => game}

@@ -45,6 +45,12 @@ class GamesController < ApplicationController
     redirect_to game_path(params[:id])
   end
 
+  def genre
+    if params[:genre]
+      @games = Game.tagged_with(params[:genre])
+    end
+  end
+
   private
 
   def game_params
